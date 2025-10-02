@@ -48,8 +48,10 @@ press `g` to open an interactive session running `jira init`.
 - [x] Dedicated panes for issue lists and detailed views
 - [x] Tests (mocked subprocess calls)
 - [x] Richer error handling for non-zero exit codes
+- [x] Document sync workflow to avoid accidental merge conflicts
 - [ ] Configurable key bindings and command palette
 - [ ] Support offline caching for last issue queries
+- [ ] Automate a pre-work sync check (pre-commit/pre-push hook)
 
 ## Development
 
@@ -64,4 +66,30 @@ Launch the TUI in development mode with live reload:
 ```bash
 textual run --dev jira_tui.app:JiraTUIApp
 ```
+
+### Working with Git without conflicts
+
+To avoid surprises when collaborating:
+
+1. Always update your local branch before making changes:
+
+   ```bash
+   git fetch origin
+   git checkout main
+   git pull --rebase
+   git checkout -
+   git rebase origin/main
+   ```
+
+   Rebase keeps the history linear and minimises the likelihood of merge conflicts in pull
+   requests.
+
+2. If you already have local commits, re-run the rebase before pushing to ensure they sit on
+   top of the latest `origin/main` changes.
+
+3. When conflicts do occur, resolve them locally and run the full test suite (`pytest`) before
+   pushing.
+
+These steps make sure everyone is working with the same base and significantly reduce the
+chance of the conflict we hit earlier.
 

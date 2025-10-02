@@ -1,0 +1,10 @@
+#status {
+    background: $primary 10%;
+    color: $text;
+    padding: 1 2;
+    border-bottom: solid $primary;
+}
+
+#log {
+    height: 1fr;
+}

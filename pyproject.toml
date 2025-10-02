@@ -1,0 +1,38 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "jira-tui"
+version = "0.1.0"
+description = "Textual TUI wrapper around jira-cli"
+authors = [{name = "Your Team"}]
+readme = "README.md"
+requires-python = ">=3.11"
+dependencies = [
+    "textual>=0.45,<0.60",
+]
+
+[project.optional-dependencies]
+test = [
+    "pytest>=7.4",
+    "pytest-asyncio>=0.21",
+]
+
+[tool.pytest.ini_options]
+asyncio_mode = "auto"
+
+[project.scripts]
+jira-tui = "jira_tui.__main__:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.setuptools.package-dir]
+"" = "src"
+
+[tool.ruff]
+line-length = 100
+select = ["E", "F", "W", "B", "I"]
+ignore = ["E501"]
+

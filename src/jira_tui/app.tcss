@@ -1,0 +1,26 @@
+#status {
+    background: $primary 10%;
+    color: $text;
+    padding: 1 2;
+    border-bottom: solid $primary;
+}
+
+#content {
+    height: 1fr;
+}
+
+.pane {
+    height: 1fr;
+    width: 1fr;
+}
+
+.issue-panes {
+    width: 1fr;
+    height: 1fr;
+    layout: vertical;
+}
+
+.issue-panes > Log {
+    border-left: solid $primary 10%;
+    padding: 1;
+}
